@@ -17,7 +17,7 @@ public class DispatcherServlet extends HttpServlet  {
 
     @Override
     public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-        BeanContainer bc = BeanContainer.getInstance();
+        BeanContainer bc = BeanContainer.getInstance(); // 객체가 됨
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
 
@@ -27,7 +27,7 @@ public class DispatcherServlet extends HttpServlet  {
 
         bc.loadBeans();
 
-        RouterService service = bc.getBean(RouterService.class);
+        RouterService service = bc.getBean(RouterService.class); // 라우터 서비스 객체 꺼냄 -> 라우터 함수 실행
         service.route(request, response);
     }
 }
