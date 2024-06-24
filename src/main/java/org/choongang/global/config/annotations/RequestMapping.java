@@ -8,5 +8,5 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RequestMapping {
-    String[] value() default "";
+    String[] value() default ""; // HandlerMappingImpl 의 String[] mappings = null;로 설정됨 -> replace 로 주소 변경
 }
