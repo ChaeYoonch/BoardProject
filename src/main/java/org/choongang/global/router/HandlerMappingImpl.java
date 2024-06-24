@@ -26,7 +26,7 @@ public class HandlerMappingImpl implements HandlerMapping{
             /** Type 애노테이션에서 체크 S */
             // @RequestMapping, @GetMapping, @PostMapping, @PatchMapping, @PutMapping, @DeleteMapping
             if (isMatch(request,item.getClass().getDeclaredAnnotations(), false, null)) {
-                // 메서드 체크
+                // 메서드 체크 | 매개변수 3개
                 for (Method m : item.getClass().getDeclaredMethods()) {
                     if (isMatch(request, m.getDeclaredAnnotations(), true, controllerUrl)) {
                         return List.of(item, m);
@@ -60,7 +60,7 @@ public class HandlerMappingImpl implements HandlerMapping{
      */
     private boolean isMatch(HttpServletRequest request, Annotation[] annotations, boolean isMethod, String prefixUrl) {
 
-        String uri = request.getRequestURI();
+        String uri = request.getRequestURI(); // 사용자 요청 주소 이거랑 MemberController 의 주소와 맞는지 확인
         String method = request.getMethod().toUpperCase();
         String[] mappings = null;
         for (Annotation anno : annotations) {
