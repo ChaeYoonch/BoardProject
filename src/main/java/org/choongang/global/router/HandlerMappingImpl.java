@@ -19,8 +19,8 @@ public class HandlerMappingImpl implements HandlerMapping{
 
     @Override
     public List<Object> search(HttpServletRequest request) {
-
-        List<Object> items = getControllers();
+           // 반환형 data = List<Object>
+        List<Object> items = getControllers(); // controller 담고 있음
 
         for (Object item : items) {
             /** Type 애노테이션에서 체크 S */
@@ -52,7 +52,6 @@ public class HandlerMappingImpl implements HandlerMapping{
 
 
     /**
-     *
      * @param request
      * @param annotations : 적용 애노테이션 목록
      * @param isMethod : 메서드의 에노테이션 체크인지
@@ -117,7 +116,6 @@ public class HandlerMappingImpl implements HandlerMapping{
 
     /**
      * 모든 컨트롤러 조회
-     *
      * @return
      */
     private List<Object> getControllers() {
