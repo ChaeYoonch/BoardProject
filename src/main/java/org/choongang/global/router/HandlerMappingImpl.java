@@ -23,13 +23,13 @@ public class HandlerMappingImpl implements HandlerMapping{
         List<Object> items = getControllers(); // controller 담고 있음
 
         for (Object item : items) {
-            /** Type 애노테이션에서 체크 S */
+            /** Type 애노테이션에서 체크 S */ // GetMapping = 메서드용 | 클래스에 애노테이션이 달려 있는 경우
             // @RequestMapping, @GetMapping, @PostMapping, @PatchMapping, @PutMapping, @DeleteMapping
             if (isMatch(request,item.getClass().getDeclaredAnnotations(), false, null)) {
-                // 메서드 체크 | 매개변수 3개
-                for (Method m : item.getClass().getDeclaredMethods()) {
+                // 메서드 체크 | 매개변수 3개 | isMatch : 값이 같은지 확인
+                for (Method m : item.getClass().getDeclaredMethods()) { // getClass - 클래스 | bean 에서 List 형태로 꺼냄 = request 와 url 가 같은지 확인하는 것
                     if (isMatch(request, m.getDeclaredAnnotations(), true, controllerUrl)) {
-                        return List.of(item, m);
+                        return List.of(item, m); // 애노테이션 획득 -> url 형식으로 변경
                     }
                 }
             }
@@ -41,7 +41,7 @@ public class HandlerMappingImpl implements HandlerMapping{
              */
             for (Method m : item.getClass().getDeclaredMethods()) {
                 if (isMatch(request, m.getDeclaredAnnotations(), true, null)) {
-                    return List.of(item, m);
+                    return List.of(item, m); // 클래스의 애노테이션 없을 때, 객체 & 메서드를 리스트 형식으로 컨트롤러 객체로 가져옴
                 }
             }
             /* Method 애노테이션에서 체크 E */
@@ -83,7 +83,7 @@ public class HandlerMappingImpl implements HandlerMapping{
             } else if (anno instanceof DeleteMapping && method.equals("DELETE")) {
                 DeleteMapping mapping = (DeleteMapping) anno;
                 mappings = mapping.value();
-            }
+            } // 각자의 방법에 따라 매핑에 (member, join) 이 담김 -> /member/join 형식으로 바뀜
 
             if (mappings != null && mappings.length > 0) {
 
