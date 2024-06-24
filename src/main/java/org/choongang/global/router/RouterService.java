@@ -27,7 +27,7 @@ public class RouterService {
     public void route(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         List<Object> data = null; // data = 객체를 담아두는 리스트 = Object 자료형의 변수
         try {
-            data = handlerMapping.search(req); // 결과물이 객체 | req = 사용자가 입력한 url
+            data = handlerMapping.search(req); // 결과물이 객체 | req = 사용자가 입력한 url | data = (Object, m)
 
             // 요청 주소
             String requestUrl = req.getRequestURI();
@@ -66,7 +66,7 @@ public class RouterService {
 
             // 찾은 컨트롤러 요청 메서드를 실행 | 메서드에 함수가 1 대 1 대응 | (controller, 함수)
             handlerAdapter.execute(req, res, data); // 찾은 컨트롤러에 해당하는 메서드 실행 = 컨트롤러 기능 -> 응답 보내주려고
-        } catch (Exception e) {
+        } catch (Exception e) { // data = 컨트롤러 + 메서드
             req.setAttribute("message", e.getMessage());
             req.setAttribute("exception", e);
             if (e instanceof ServletException || e instanceof IOException) {
