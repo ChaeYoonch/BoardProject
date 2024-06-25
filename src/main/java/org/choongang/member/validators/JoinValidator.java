@@ -32,7 +32,11 @@ public class JoinValidator implements Validator<RequestJoin>, RequiredValidator,
         int status = HttpServletResponse.SC_BAD_REQUEST; // 404
 
         /* 필수 항목 유효성 검사 S */
-        checkRequired(email, new AlertException("이메일을 입력하세요.", status)); // 메세지만 띄워줌
+        checkRequired(email, new AlertException("이메일을 입력하세요.", status)); // 알림 형태로 예외 내보내므로 메세지만 띄워줌
+        checkRequired(password, new AlertException("비밀번호를 입력하세요.", status));
+        checkRequired(confirmPassword, new AlertException("비밀번호를 확인하세요.", status));
+        checkRequired(userName, new AlertException("회원명응 입력하세요.", status));
+        checkTrue(termsAgree, new AlertException("약관에 동의해주세요.", status));
         /* 필수 항목 유효성 검사 E */
     }
 }
