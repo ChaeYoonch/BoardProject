@@ -41,7 +41,12 @@
                     </a>
                 </div>
                 <div class="right">
-
+                    <form class="search-box" method="GET" action="${searchUrl}" autocomplete="off">
+                        <input type="text" name="keyword" placeholder="<fmt:message key='검색어를_입력하세요.' />">
+                        <button type="submit">
+                            <i class="xi-search"></i>
+                        </button>
+                    </form> <!-- 조회이므로 GET 사용 -->
                 </div>
             </div>
         </section>
