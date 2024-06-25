@@ -82,8 +82,8 @@ public class RouterService {
 
             // 예외 페이지 처리
             if (data != null) {
-                exceptionHandlerService.handle(e, data.get(0));
-            }
+                exceptionHandlerService.handle(e, data.get(0)); // 설정해 놓은 예외 발생시 여기로 유입
+            } // 1차 = MemberController 정의된 것 -> 2차 = CommonController 정의된 것
         }
     }
 }
