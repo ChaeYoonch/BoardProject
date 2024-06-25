@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.choongang.member.mappers.MemberMapper">
-    <resultMap id="memberMap" type="org.choongang.member.entities.Member">
+    <resultMap id="memberMap" type="org.choongang.member.entities.Member"> <!-- Map : <> 안의 값 -->
         <result column="USER_NO" property="userNo" /> <!-- column : DB 저장된 명칭 -->
         <result column="EMAIL" property="email" />
         <result column="PASSWORD" property="password" />
@@ -12,4 +12,16 @@
         <result column="REG_DT" property="regDt" />
         <result column="MOD_DT" property="modDt" />
     </resultMap>
+
+    <select id="get"> <!-- 개별 회원 조회 -->
+        SELECT * FROM MEMBER WHERE EMAIL=#{email}
+    </select>
+
+    <select id="exists" resultMap="int"> <!-- 회원 등록 -->
+        SELECT COUNT(*) FROM MEMBER WHERE EMAIL=#{email}
+    </select>
+
+    <select id="register">
+        INSERT INTO MEMBER (USER_NO, EMAIL, PASSWORD, USER_TYPE, USER_NAME) VALUES (SEQ_MEMBER.NEXTVAL, #{email}, #{password}, #{userType}, #{userName})
+    </select>
 </mapper>
