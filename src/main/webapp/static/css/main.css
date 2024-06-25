@@ -46,6 +46,7 @@ header .search-box button {
     width: 45px;
     background: #000;
     border: 0;
+    cursor: pointer;
 }
 
 header .search-box button i {
