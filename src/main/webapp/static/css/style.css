@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap'); /* 기본 폰트 설정 */
 
-/* 태그 기본 스타일 초기화 - 공통 스타일 */
+/* 태그 기본 스타일 초기화 - common.tag 에 적용되는 공통 스타일 */
 * {
     box-sizing: border-box;
     font-family: "Nanum Gothic", sans-serif; /* 기준 폰트, 대체 폰트 */
