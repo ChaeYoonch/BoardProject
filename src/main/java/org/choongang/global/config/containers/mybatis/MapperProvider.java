@@ -5,7 +5,7 @@ import org.choongang.global.config.annotations.mybatis.MapperScan;
 
 import java.util.Arrays;
 
-@MapperScan({"org.choongang.member.mapper"})
+@MapperScan({"org.choongang.member.mappers"}) // 해당 범위의 mapper 적용
 public class MapperProvider {
 
     public static MapperProvider instance;
