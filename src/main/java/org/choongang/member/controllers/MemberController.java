@@ -27,7 +27,7 @@ public class MemberController {
     @GetMapping("/login") // member/login 으로 유입됨
     public String login() {
 
-        return "member/login"; // login.jsp 로 이동
+        return "member/login"; // login.jsp 로 이동 | 임시로 탬플릿 넣어놓음
     }
 
     // 로그인 처리
