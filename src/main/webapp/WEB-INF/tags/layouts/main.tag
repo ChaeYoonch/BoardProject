@@ -34,7 +34,7 @@
             </div>
         </section>
         <section class="logo-search">
-            <div class="layout width inner">
+            <div class="layout-width inner">
                 <div class="left">
                     <a href="${homeUrl}" class="logo">
                         <img src="${logoUrl}" alt="<fmt:message key='로고' />">
