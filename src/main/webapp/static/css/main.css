@@ -86,6 +86,10 @@ nav > .inner a {
     padding: 0 25px;
     line-height: 45px;
 }
+
+nav > .inner a:hover {
+    background: #414141;
+}
 /* 사이트 헤더 영역 E */
 
 /* 사이트 푸터 영역 S */
