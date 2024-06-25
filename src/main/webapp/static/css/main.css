@@ -15,6 +15,14 @@
     padding: 30px;
 }
 
+.content-box h1 {
+    font-size: 1.35rem;
+    line-height: 1;
+    padding: 0 10px 15px;
+    margin: 0 0 20px;
+    border-bottom: 2px solid #000;
+}
+
 /* 사이트 헤더 영역 S */
 header .site-top {
     background: #f8f8f8;
