@@ -19,8 +19,8 @@ public class MemberController {
     // 회원가입 처리
     @PostMapping("/join")
     public String joinPs(RequestJoin form) { // RequestJoin 의 값이 알아서 들어옴
-
-        return null;
+        System.out.println(form);
+        return "member/join";
     }
 
     // 로그인 양식
