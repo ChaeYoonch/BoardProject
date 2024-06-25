@@ -5,6 +5,12 @@
     margin: 0 auto;
 }
 
+.content-box {
+    min-width: 700px;
+    max-width: 980px;
+    margin: 50px auto;
+}
+
 /* 사이트 헤더 영역 S */
 header .site-top {
     background: #f8f8f8;
