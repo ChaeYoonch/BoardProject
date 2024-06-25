@@ -1,14 +1,50 @@
 <%@ tag body-content="scriptless" %>
 <%@ tag pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <%@ taglib prefix="layout" tagdir="/WEB-INF/tags/layouts" %>
 <%@ attribute name="title" %>
+<fmt:setBundle basename="messages.commons" /> <%-- 하위 태그 모두에 적용됨 --%>
 <c:url var="cssUrl" value="/css/" />
 <c:url var="jsUrl" value="/js/" />
+<c:url var="homeUrl" value="/" />
+<c:url var="searchUrl" value="/board/search" />
+<c:url var="logoUrl" value="/images/logo.png" />
 
 <layout:common title="${title}">
     <jsp:attribute name="header">
-        <h1>메인 레이아웃 상단 영역!</h1>
+        <section class="site-top">
+            <div class="layout-width inner">
+                <div class="left">
+                    <a href="${homeUrl}">
+                        <i class="xi-home-o"></i>
+                        <fmt:message key="홈" />
+                    </a>
+                </div>
+                <div class="right">
+                    <a href="<c:url value='/member/join' />">
+                        <i class="xi-user-plus-o"></i>
+                        <fmt:message key="회원가입" />
+                    </a>
+                    <a href="<c:url value='/member/login' />">
+                        <i class="xi-log-in"></i>
+                        <fmt:message key="로그인" />
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="logo-search">
+            <div class="layout width inner">
+                <div class="left">
+                    <a href="${homeUrl}" class="logo">
+                        <img src="${logoUrl}" alt="<fmt:message key='로고' />">
+                    </a>
+                </div>
+                <div class="right">
+
+                </div>
+            </div>
+        </section>
     </jsp:attribute>
     <jsp:attribute name="footer">
         <h1>메인 레이아웃 하단 영역!</h1>
