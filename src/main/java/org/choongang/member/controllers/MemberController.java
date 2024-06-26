@@ -7,6 +7,7 @@ import org.choongang.global.config.annotations.GetMapping;
 import org.choongang.global.config.annotations.PostMapping;
 import org.choongang.global.config.annotations.RequestMapping;
 import org.choongang.member.services.JoinService;
+import org.choongang.member.services.LoginService;
 
 @Controller
 @RequestMapping("/member") // 맨 앞의 주소는 member 로 매칭됨
@@ -14,6 +15,7 @@ import org.choongang.member.services.JoinService;
 public class MemberController {
 
     private final JoinService joinService; // JoinService 의존성으로 주입됨
+    private final LoginService loginService; // LoginService 의존성으로 주입됨
 
     // 회원가입 양식
     @GetMapping("/join") // member/join 으로 유입됨
@@ -45,6 +47,8 @@ public class MemberController {
     @PostMapping("/login")
     public String loginPs(RequestLogin form) { // RequestLogin 의 값이 알아서 들어옴
 
-        return null;
+        loginService.process(form); // public void process(RequestLogin form) { } 로 연동됨
+
+        return "commons/execute_script"; // script 태그 만나면 execute_script 에 정의된대로 script 실행됨
     }
 }
