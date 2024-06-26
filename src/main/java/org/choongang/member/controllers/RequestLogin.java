@@ -7,4 +7,5 @@ public class RequestLogin { // 로그인 데이터
     private String email;
     private String password;
     private boolean saveEmail;
+    private String redirectUrl;
 }
