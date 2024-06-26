@@ -18,7 +18,7 @@ public class CommonControllerAdvice {
     @ModelAttribute
     public boolean isLogin() {
         return memberUtil.isLogin();
-    } // 메서드명 isLogin 자체가 모두 공유하게 함
+    } // 메서드명 isLogin 자체가 속성명이 됨 | 모두 공유하게 함
 
     @ModelAttribute
     public boolean isAdmin() {
