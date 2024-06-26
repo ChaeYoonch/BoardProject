@@ -1,6 +1,7 @@
 package org.choongang.member.controllers;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.choongang.global.config.annotations.Controller;
 import org.choongang.global.config.annotations.GetMapping;
@@ -57,5 +58,11 @@ public class MemberController {
         request.setAttribute("script", script);
 
         return "commons/execute_script"; // script 태그 만나면 execute_script 에 정의된대로 script 실행됨
+    }
+
+    // 로그아웃 처리
+    @RequestMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate(); // 세션 비우기 : 로그아웃
     }
 }
