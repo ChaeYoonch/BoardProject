@@ -23,14 +23,21 @@
                     </a>
                 </div>
                 <div class="right">
-                    <a href="<c:url value='/member/join' />">
-                        <i class="xi-user-plus-o"></i>
-                        <fmt:message key="회원가입" />
-                    </a>
-                    <a href="<c:url value='/member/login' />">
-                        <i class="xi-log-in"></i>
-                        <fmt:message key="로그인" />
-                    </a>
+                    <util:guestOnly>
+                        <a href="<c:url value='/member/join' />">
+                            <i class="xi-user-plus-o"></i>
+                            <fmt:message key="회원가입" />
+                        </a>
+                        <a href="<c:url value='/member/login' />">
+                            <i class="xi-log-in"></i>
+                            <fmt:message key="로그인" />
+                        </a>
+                    </util:guestOnly>
+                    <util:memberOnly>
+                        <a href="<c:url value="/mypage" />">
+                            <fmt:message key="마이페이지" />
+                        </a>
+                    </util:memberOnly>
                 </div>
             </div>
         </section>
