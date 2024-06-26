@@ -28,7 +28,7 @@ public class ExceptionHandlerService {
     private final HttpSession session;
     private final HandlerControllerAdvice handlerAdvice;
 
-    public void handle(Exception e, Object controller) {
+    public void handle(Throwable e, Object controller) {
         if (e instanceof InvocationTargetException invocationTargetException) {
             e = invocationTargetException.getTargetException();
         }
