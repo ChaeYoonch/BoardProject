@@ -45,9 +45,16 @@ public class MemberController {
 
     // 로그인 처리
     @PostMapping("/login")
-    public String loginPs(RequestLogin form) { // RequestLogin 의 값이 알아서 들어옴
+    public String loginPs(RequestLogin form, HttpServletRequest request) { // RequestLogin 의 값이 알아서 들어옴
 
         loginService.process(form); // public void process(RequestLogin form) { } 로 연동됨
+
+        String redirectUrl = form.getRedirectUrl();
+        redirectUrl = redirectUrl == null || redirectUrl.isBlank() ? "/" : redirectUrl; // null 이거나 빈 값이면 메인 페이지
+
+        String script = String.format("parent.location.replace('%s');", request.getContextPath() + redirectUrl); // 페이지 이동
+
+        request.setAttribute("script", script);
 
         return "commons/execute_script"; // script 태그 만나면 execute_script 에 정의된대로 script 실행됨
     }
