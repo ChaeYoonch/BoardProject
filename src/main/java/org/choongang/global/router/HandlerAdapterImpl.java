@@ -35,7 +35,7 @@ public class HandlerAdapterImpl implements HandlerAdapter {
     }
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response, List<Object> data) {
+    public void execute(HttpServletRequest request, HttpServletResponse response, List<Object> data) throws Exception {
 
         Object controller = data.get(0); // 컨트롤러 객체
         Method method = (Method)data.get(1); // 찾은 요청 메서드
@@ -161,7 +161,6 @@ public class HandlerAdapterImpl implements HandlerAdapter {
         /* 메서드 매개변수 의존성 주입 처리 E */
 
         /* 요청 메서드 호출 S */
-        try {
             // controller 적용 범위  Advice 처리
             handlerControllerAdvice.handle(controller);
 
@@ -185,10 +184,6 @@ public class HandlerAdapterImpl implements HandlerAdapter {
             String tpl = "/WEB-INF/templates/" + result + ".jsp";
             RequestDispatcher rd = request.getRequestDispatcher(tpl);
             rd.forward(request, response);
-
-        } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
-        }
         /* 요청 메서드 호출 E */
     }
 
