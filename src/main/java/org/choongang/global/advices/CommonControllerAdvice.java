@@ -2,16 +2,32 @@ package org.choongang.global.advices;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.choongang.global.config.annotations.ControllerAdvice;
 import org.choongang.global.config.annotations.ModelAttribute;
 import org.choongang.global.exceptions.*;
+import org.choongang.member.MemberUtil;
+import org.choongang.member.entities.Member;
 
+@RequiredArgsConstructor
 @ControllerAdvice("org.choongang")
 public class CommonControllerAdvice {
 
-    @ModelAttribute("commonValue2")
-    public String commonValue() {
-        return "공통 값 속성 추가 테스트";
+    private final MemberUtil memberUtil;
+
+    @ModelAttribute
+    public boolean isLogin() {
+        return memberUtil.isLogin();
+    } // 메서드명 isLogin 자체가 모두 공유하게 함
+
+    @ModelAttribute
+    public boolean isAdmin() {
+        return memberUtil.isAdmin();
+    } // 공통으로 유지할 값
+
+    @ModelAttribute
+    public Member loggedMember () {
+        return memberUtil.getMember();
     }
 
     /**
