@@ -3,6 +3,7 @@ package org.choongang.admin.advices;
 import lombok.RequiredArgsConstructor;
 import org.choongang.global.Interceptor;
 import org.choongang.global.config.annotations.ControllerAdvice;
+import org.choongang.global.exceptions.UnAuthorizedException;
 import org.choongang.member.MemberUtil;
 
 @RequiredArgsConstructor
@@ -14,8 +15,10 @@ public class AdminControllerAdvice implements Interceptor {
     @Override
     public boolean preHandle() { // 관리자가 아니면 통과 X
 
-        System.out.println("preHandle()!");
+        if (!memberUtil.isAdmin()) {
+            throw new UnAuthorizedException();
+        }
 
-        return false;
+        return true;
     }
 }
