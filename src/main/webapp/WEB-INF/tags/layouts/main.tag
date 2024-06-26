@@ -34,6 +34,10 @@
                         </a>
                     </util:guestOnly>
                     <util:memberOnly>
+                        <fmt:message key="LOGIN_MSG">
+                            <fmt:param>${loggedMember.userName}</fmt:param> <!-- {0} -->
+                            <fmt:param>${loggedMember.email}</fmt:param> <!-- ({1})님 로그인 -->
+                        </fmt:message>
                         <a href="<c:url value="/mypage" />">
                             <fmt:message key="마이페이지" />
                         </a>
