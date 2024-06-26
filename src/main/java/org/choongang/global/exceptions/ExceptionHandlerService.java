@@ -14,6 +14,7 @@ import org.choongang.global.config.annotations.RestControllerAdvice;
 import org.choongang.global.config.annotations.Service;
 
 import java.io.PrintWriter;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,6 +29,10 @@ public class ExceptionHandlerService {
     private final HandlerControllerAdvice handlerAdvice;
 
     public void handle(Exception e, Object controller) {
+        if (e instanceof InvocationTargetException invocationTargetException) {
+            e = invocationTargetException.getTargetException();
+        }
+
         Class clazz = e.getClass();
         Method method = null;
         Object obj = controller;
@@ -67,9 +72,9 @@ public class ExceptionHandlerService {
                         }
                     }
                 }
-            } // endfor
+            } // end for
 
-        } // endif
+        } // end if
 
         if (method == null) {
             throw new RuntimeException(e);
