@@ -50,6 +50,9 @@ public class CommonControllerAdvice {
                 request.setAttribute("script", sb.toString());
                 return "commons/execute_script";
             }
+        } else {
+            // CommonException 으로 정의한 예외가 아닌 경우 -> 응답 코드 500
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
 
         return "errors/error";
