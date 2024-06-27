@@ -5,6 +5,7 @@
     box-sizing: border-box;
     font-family: "Nanum Gothic", sans-serif; /* 기준 폰트, 대체 폰트 */
     color: #000;
+    outline: none;
 }
 
 html {
