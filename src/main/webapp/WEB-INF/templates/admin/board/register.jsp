@@ -7,7 +7,7 @@
     <form name="frmSave" method="post" action="${actionUrl}" target="ifrmProcess" autocomplete="off">
         <input type="hidden" name="mode" value="register"> <!-- 등록 -->
 
-        <jsp:include page="_form.jsp" /> <!-- 공유할 부분 -->
+        <jsp:include page="../../board/_form.jsp" /> <!-- 공유할 부분 -->
 
         <div class="button-group">
             <button type="reset">다시입력</button>
