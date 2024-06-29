@@ -4,6 +4,11 @@ import lombok.Builder;
 import lombok.Data;
 import org.choongang.board.constants.Authority;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 @Data
 @Builder
 public class Board {
@@ -14,4 +19,17 @@ public class Board {
     private int activeCategory; // 분류 사용 여부
     private String category; // 분류
     private Authority authority;
+
+    // 분류 목록
+    public List<String> getCategories() {
+        if (category != null) {
+
+            List<String> categories = Arrays.stream(category.trim().split("\\n")) // \는 첫 번째 1개는 삭제되므로 2개 써야 함
+                                    .map(s -> s.replace("\\r", ""))
+                                    .toList();
+
+            return categories;
+        }
+        return Collections.EMPTY_LIST; // 오류방지
+    }
 }
