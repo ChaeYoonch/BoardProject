@@ -50,7 +50,6 @@ public class AdminControllerAdvice implements Interceptor {
 
         return menus;
     }
-
     /**
      * 주 메뉴 코드 - /admin/주메뉴 코드
      * @return
