@@ -1,71 +1,63 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<h2>기본 설정</h2>
-<table class="table-cols">
-    <tr>
-        <th width='150'>게시판 ID</th>
-        <td>
-            <input type="text" name="bId">
-        </td>
-    </tr>
-    <tr>
-        <th>게시판 이름</th>
-        <td>
-            <input type="text" name="bName">
-        </td>
-    </tr>
-    <tr>
-        <th>1페이지 행수</th>
-        <td>
-            <input type="number" name="rowsPerPage" min="1">
-        </td>
-    </tr>
-    <tr>
-        <th>사용여부</th>
-        <td>
-            <input type="radio" name="active" value="true" id="active_true">
-            <label for="active_true">사용</label>
+<%@ taglib prefix="util" tagdir="/WEB-INF/tags/utils" %>
 
-            <input type="radio" name="active" value="false" id="active_false">
-            <label for="active_false">미사용</label>
-        </td>
-    </tr>
-</table>
+<input type="hidden" name="bId" value="${data.BId}">
+<input type="hidden" name="gId" value="${data.GId}">
 
-<h2>분류 설정</h2>
-<table class="table-cols">
-    <tr>
-        <th width="150">사용여부</th>
-        <td>
-            <input type="radio" name="activeCategory" value="true" id="activeCategory_true">
-            <label for="activeCategory_true">사용</label>
+<c:if test="${board.activeCategory == 1}">
+    <dl>
+        <dt>분류 선택</dt>
+        <dd>
+            <c:forEach var="category" items="${board.categories}" varStatus="status">
+                <input type="radio" name="category" value="${category}" id="category-${status.index}"${data.category == category ? ' checked':''}>
+                <label for="category-${status.index}">${category}</label>
+            </c:forEach>
+        </dd>
+    </dl>
+</c:if>
 
-            <input type="radio" name="activeCategory" value="false" id="activeCategory_false">
-            <label for="activeCategory_false">미사용</label>
-        </td>
-    </tr>
-    <tr>
-        <th>분류</th>
-        <td>
-            <textarea name="category"></textarea>
-            <div class="message">분류가 여러 개이면 줄 개행을 통해 입력</div>
-        </td>
-    </tr>
-</table>
-
-<h2>권한 설정</h2>
-<table class="table-cols">
-    <tr>
-        <th width='150'>글쓰기/글수정</th>
-        <td>
-            <input type="radio" name="authority" value="ALL" id="authority_ALL">
-            <label for="authority_ALL">비회원 + 회원 + 관리자</label>
-
-            <input type="radio" name="authority" value="USER" id="authority_USER">
-            <label for="authority_USER">회원 + 관리자</label>
-
-            <input type="radio" name="authority" value="ADMIN" id="authority_ADMIN">
-            <label for="authority_ADMIN">관리자</label>
-        </td>
-    </tr>
-</table>
+<dl>
+    <dt>작성자</dt>
+    <dd>
+        <input type="text" name="poster" value="${isLogin ? loggedMember.userName : ''}">
+        <c:if test="${isAdmin}">
+            <input type="checkbox" name="notice" value="true" id="notice"${data.notice == 1 ? ' checked':''}>
+            <label for="notice">
+                공지글
+            </label>
+        </c:if>
+    </dd>
+</dl>
+<util:guestOnly>
+    <dl>
+        <dt>비밀번호</dt>
+        <dd>
+            <input type="password" name="guestPassword" placeholder="글 수정, 삭제 비밀번호">
+        </dd>
+    </dl>
+</util:guestOnly>
+<dl>
+    <dt>제목</dt>
+    <dd>
+        <input type="text" name="subject" value="${data.subject}">
+    </dd>
+</dl>
+<dl>
+    <dt>내용</dt>
+    <dd>
+        <textarea name="content" id="content">${data.content}</textarea>
+    </dd>
+</dl>
+<dl>
+    <dt>이미지 첨부</dt>
+    <dd>
+        <button type='button'>이미지 선택</button>
+    </dd>
+</dl>
+<dl>
+    <dt>파일 첨부</dt>
+    <dd>
+        <button type='button'>파일 선택</button>
+    </dd>
+</dl>
