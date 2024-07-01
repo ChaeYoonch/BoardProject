@@ -31,7 +31,7 @@ header .site-top {
 
 header .site-top > .inner {
     display: flex;
-    justify-content: space-between; <!-- 좌우로 아이콘 배치 -->
+    justify-content: space-between;
     height: 35px;
     align-items: center;
 }
@@ -60,7 +60,7 @@ header .logo-search {
 header .logo-search > .inner {
     display: flex;
     justify-content: space-between;
-    align-items: center; <!-- 정 가운데 배치 -->
+    align-items: center;
 }
 
 header .search-box {
@@ -118,3 +118,20 @@ footer {
     border-top: 1px solid #ccc;
 }
 /* 사이트 푸터 영역 E */
+
+/* 페이징 공통 S */
+.pagination {
+    text-align: center;
+    margin: 20px 0;
+}
+.pagination a {
+    border: 1px solid #333;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+.pagination a.on {
+    background: #333;
+    color: #fff;
+}
+/* 페이징 공통 E */
